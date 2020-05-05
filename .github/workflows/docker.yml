@@ -18,6 +18,6 @@ jobs:
       id: version
       run: echo ::set-output name=value::$(echo ${GITHUB_REF:10})
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag tinywan/angular-cli:${{steps.vars.outputs.tag}}
+      run: docker build . --file Dockerfile --tag dmitrydorofeev/godeploy:${{steps.version.outputs.value}}
     - name: Push the image
       run: docker push dmitrydorofeev/godeploy:${{steps.version.outputs.value}}
