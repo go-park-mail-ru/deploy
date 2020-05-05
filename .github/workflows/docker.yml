@@ -1,0 +1,23 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Get the version
+      id: version
+      run: echo ::set-output name=value::$(echo ${GITHUB_REF:10})
+    - name: Build Docker image
+      run: docker build . --file Dockerfile --tag tinywan/angular-cli:${{steps.vars.outputs.tag}}
+    - name: Push the image
+      run: docker push dmitrydorofeev/godeploy:${{steps.version.outputs.value}}
