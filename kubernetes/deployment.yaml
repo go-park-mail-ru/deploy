@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coronavirusapi
+  labels:
+    app: coronavirusapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: coronavirusapi
+  template:
+    metadata:
+      labels:
+        app: coronavirusapi
+    spec:
+      containers:
+      - name: coronavirusapi
+        image: dmitrydorofeev/coronavirusapi:920d2e539226633b356dc6624631e0232e0afaae
+        ports:
+        - containerPort: 8080

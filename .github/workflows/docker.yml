@@ -9,15 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      VERSION: ${GITHUB_SHA:8}
     steps:
     - uses: actions/checkout@v1
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-    - name: Get the version
-      id: version
-      run: echo ::set-output name=value::$(echo ${GITHUB_REF:10})
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag dmitrydorofeev/godeploy:${{steps.version.outputs.value}}
+      run: docker build . --file Dockerfile --tag dmitrydorofeev/godeploy:$VERSION
     - name: Push the image
-      run: docker push dmitrydorofeev/godeploy:${{steps.version.outputs.value}}
+      run: docker push dmitrydorofeev/godeploy:$VERSION
