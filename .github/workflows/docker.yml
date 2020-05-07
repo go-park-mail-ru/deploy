@@ -28,11 +28,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-          script: docker pull dmitrydorofeev/godeploy:${GITHUB_SHA::8}
+          script: docker pull dmitrydorofeev/godeploy:${{GITHUB_SHA::8}}
       - name: deploy docker image
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-          script: docker stop $(docker ps -aq) && docker run -d -p 8080:8080 dmitrydorofeev/godeploy:${GITHUB_SHA::8}
+          script: docker stop $(docker ps -aq) && docker run -d -p 8080:8080 dmitrydorofeev/godeploy:${{GITHUB_SHA::8}}
