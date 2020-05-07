@@ -23,14 +23,24 @@ jobs:
     - name: Build
       run: go build -o app ./simple/main.go
 
+    - name: Upload build result
+      uses: actions/upload-artifact@v1
+      with:
+        name: bin
+        path: ./app
+
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Download bin file
+      uses: actions/download-artifact@v1
+      with:
+        name: bin
     - name: Transfer bin file to server
       uses: appleboy/scp-action@v0.0.10
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PRIVATE_KEY }}
-        source: "./app"
+        source: "bin/app"
         target: "/home/ubuntu/"
