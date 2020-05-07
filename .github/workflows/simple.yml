@@ -45,10 +45,17 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         source: "bin/app"
         target: "/home/ubuntu/"
-    - name: run
+    - name: chmod
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: chmod 755 /home/ubuntu/bin/app
+    - name: restart service
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: sudo systemctl restart app.service

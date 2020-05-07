@@ -12,7 +12,7 @@ func OilPriceHandler(w http.ResponseWriter, r *http.Request) {
 
 	magicNumber := rand.Int()
 
-	w.Write([]byte(strconv.Itoa(magicNumber)))
+	w.Write([]byte("Oil price: " + strconv.Itoa(magicNumber)))
 }
 
 func main() {
