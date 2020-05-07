@@ -1,20 +1,22 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
+	"net/http"
+	"strconv"
 	"time"
 )
 
-func main() {
+func OilPriceHandler(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().UnixNano())
 
 	magicNumber := rand.Int()
 
-	if magicNumber == 5 {
-		fmt.Println("Oil price is negative =(")
-		return
-	}
+	w.Write([]byte(strconv.Itoa(magicNumber)))
+}
 
-	fmt.Println("=|")
+func main() {
+	http.HandleFunc("/", OilPriceHandler)
+
+	http.ListenAndServe(":8080", nil)
 }

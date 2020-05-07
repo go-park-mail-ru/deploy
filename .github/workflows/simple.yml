@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: go build -o app ./simple/main.go
+      run: make build
 
     - name: Upload build result
       uses: actions/upload-artifact@v1
