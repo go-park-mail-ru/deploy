@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -18,5 +19,6 @@ func OilPriceHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", OilPriceHandler)
 
+	fmt.Println("Starting service")
 	http.ListenAndServe(":8080", nil)
 }

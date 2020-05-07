@@ -14,6 +14,6 @@ jobs:
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag dmitrydorofeev/godeploy:${GITHUB_SHA::8}
+      run: docker build -t dmitrydorofeev/godeploy:${GITHUB_SHA::8} .
     - name: Push the image
       run: docker push dmitrydorofeev/godeploy:${GITHUB_SHA::8}
