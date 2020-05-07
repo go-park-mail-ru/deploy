@@ -24,6 +24,7 @@ jobs:
       run: go build -o app ./simple/main.go
 
   deploy:
+    runs-on: ubuntu-latest
     steps:
     - name: Transfer bin file to server
       uses: appleboy/scp-action@v0.0.10
