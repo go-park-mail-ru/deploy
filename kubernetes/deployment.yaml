@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: coronavirusapi
+  name: godeploy
   labels:
-    app: coronavirusapi
+    app: godeploy
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: coronavirusapi
+      app: godeploy
   template:
     metadata:
       labels:
-        app: coronavirusapi
+        app: godeploy
     spec:
       containers:
-      - name: coronavirusapi
-        image: dmitrydorofeev/coronavirusapi:920d2e539226633b356dc6624631e0232e0afaae
+      - name: godeploy
+        image: dmitrydorofeev/godeploy:6a90f947
         ports:
         - containerPort: 8080
