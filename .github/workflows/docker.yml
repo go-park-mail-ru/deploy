@@ -37,4 +37,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-          script: sudo docker rm -f $(docker ps -aq) && sudo docker run -d -p 8080:8080 dmitrydorofeev/godeploy:${GITHUB_SHA::8}
+          script: |
+            [[ docker ps -aq ]] && sudo docker rm -f $(docker ps -aq) || echo "nooo"
+            sudo docker run -d -p 8080:8080 dmitrydorofeev/godeploy:${GITHUB_SHA::8}
