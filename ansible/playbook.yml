@@ -9,19 +9,19 @@
           state: present
       - name: "Copy nginx config"
         copy:
-          src: files/app.conf
-          dest: /etc/nginx/sites-available/default
+          src: files/jsdaddy.tech.conf
+          dest: /etc/nginx/conf.d
       - name: "Reload nginx configuration"
         command: nginx -s reload
 
   - name: "Update systemd unit"
     become: yes
-    hosts: all
+    hosts: web
     tasks:
       - name: "Provide actual unit file"
         copy:
-          src: files/app.service
-          dest: /etc/systemd/system/app.service
+          src: files/api.service
+          dest: /etc/systemd/system/api.service
 
       - name: "Systemctl daemon reload"
         command: systemctl daemon-reload

@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine as build
 
 COPY . /project
 
@@ -6,4 +6,8 @@ WORKDIR /project
 
 RUN apk add make && make build
 
-CMD ["/project/app"]
+FROM alpine:latest
+
+COPY --from=build /project/app /bin/
+
+CMD ["app"]
