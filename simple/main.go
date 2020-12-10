@@ -13,12 +13,13 @@ func OilPriceHandler(w http.ResponseWriter, r *http.Request) {
 
 	magicNumber := rand.Int()
 
-	w.Write([]byte("Oil price 2.0: " + strconv.Itoa(magicNumber)))
+	w.Write([]byte("Oil price: " + strconv.Itoa(magicNumber)))
 }
 
 func main() {
 	http.HandleFunc("/", OilPriceHandler)
 
 	fmt.Println("Starting service")
+	
 	http.ListenAndServe(":8080", nil)
 }
