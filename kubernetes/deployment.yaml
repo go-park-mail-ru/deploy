@@ -5,7 +5,7 @@ metadata:
   labels:
     app: godeploy
 spec:
-  replicas: 3
+  replicas: 70
   selector:
     matchLabels:
       app: godeploy
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: godeploy
-        image: dmitrydorofeev/godeploy:6a90f947
+        image: dmitrydorofeev/godeploy:cf340e3e
         ports:
         - containerPort: 8080
