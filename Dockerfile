@@ -6,6 +6,8 @@ WORKDIR /project
 
 RUN apk add make && make build
 
+#================================
+
 FROM alpine:latest
 
 COPY --from=build /project/app /bin/
