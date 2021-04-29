@@ -8,17 +8,16 @@ import (
 	"time"
 )
 
-func OilPriceHandler(w http.ResponseWriter, r *http.Request) {
+func MagicNumberHandler(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().UnixNano())
 
 	magicNumber := rand.Int()
 
 	w.Write([]byte(strconv.Itoa(magicNumber)))
-	w.Write([]byte("kek"))
 }
 
 func main() {
-	http.HandleFunc("/", OilPriceHandler)
+	http.HandleFunc("/", MagicNumberHandler)
 
 	fmt.Println("Starting service")
 
