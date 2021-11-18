@@ -16,7 +16,7 @@ func MagicNumberHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("X-Version", os.Getenv("VERSION"))
 
-	w.Write([]byte(strconv.Itoa(magicNumber)))
+	w.Write([]byte("Magic numer: " + strconv.Itoa(magicNumber)))
 }
 
 func main() {
