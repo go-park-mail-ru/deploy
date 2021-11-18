@@ -1,3 +1,2 @@
 [web]
-146.185.211.80 ansible_user=ubuntu ansible_ssh_private_key_file=~/Dev/technopark/deploy-NOaQS9H7.pem
-146.185.211.81 ansible_user=ubuntu ansible_ssh_private_key_file=~/Dev/technopark/deploy-NOaQS9H7.pem
+95.163.250.127 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/deploy-YaCAnuaN.pem

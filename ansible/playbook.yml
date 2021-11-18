@@ -1,25 +1,4 @@
 ---
-- name: "Provide certs"
-  hosts: web
-  tasks:
-    - name: "Copy certs"
-      copy:
-        src: files/certs
-        dest: /home/ubuntu
-- name: "Install nginx"
-  hosts: web
-  become: yes
-  tasks:
-    - name: "Install nginx from apt"
-      apt:
-        name: nginx
-        state: present
-    - name: "Copy nginx config"
-      copy:
-        src: files/jsdaddy.tech.conf
-        dest: /etc/nginx/conf.d
-    - name: "Reload nginx configuration"
-      command: nginx -s reload
 - name: "Update systemd unit"
   become: yes
   hosts: web
@@ -30,8 +9,8 @@
         dest: /etc/systemd/system/api.service
     - name: "Systemctl daemon reload"
       command: systemctl daemon-reload
-# - name: "Install docker"
-#   become: yes
-#   hosts: all
-#   roles:
-#     - role: geerlingguy.docker
+- name: "Install docker"
+  become: yes
+  hosts: all
+  roles:
+    - role: geerlingguy.docker
