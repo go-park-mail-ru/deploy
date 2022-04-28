@@ -4,7 +4,7 @@ COPY . /project
 
 WORKDIR /project
 
-RUN apk add make && make build
+RUN apk add make git && make build
 
 #================================
 
