@@ -6,7 +6,6 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
-	"strconv"
 	"time"
 )
 
@@ -14,10 +13,11 @@ func MagicNumberHandler(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().UnixNano())
 
 	magicNumber := rand.Int()
+	version := os.Getenv("VERSION")
 
-	w.Header().Set("X-Version", os.Getenv("VERSION"))
+	w.Header().Set("X-Version", version)
 
-	w.Write([]byte("Magic numer: " + strconv.Itoa(magicNumber)))
+	w.Write([]byte(fmt.Sprintf("Magic numer: %d, version: %s", magicNumber, version)))
 }
 
 func main() {

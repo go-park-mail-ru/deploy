@@ -3,7 +3,7 @@
   become: yes
   hosts: web
   tasks:
-    - name: "Provide actual unit file"
+    - name: "Provide latest unit file"
       copy:
         src: files/api.service
         dest: /etc/systemd/system/api.service
