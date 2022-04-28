@@ -22,7 +22,7 @@ func MagicNumberHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", MagicNumberHandler)
 
-	fmt.Println("Starting service")
+	fmt.Println("Starting service on http://127.0.0.1:8080")
 
 	http.ListenAndServe(":8080", nil)
 }
