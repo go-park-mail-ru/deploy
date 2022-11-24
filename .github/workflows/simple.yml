@@ -36,8 +36,6 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: bin
-      - name: Debug
-        run: echo '${{ secrets.PRIVATE_KEY }}'
       - name: Transfer bin file to server
         uses: appleboy/scp-action@master
         with:
