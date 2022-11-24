@@ -43,8 +43,8 @@ jobs:
         with:
           host: 89.208.198.186
           username: ubuntu
-          fingerprint: ${{ secrets.FINGERPRINT }}
           key: ${{ secrets.PRIVATE_KEY }}
+          debug: true
           source: "bin/app"
           target: "/home/ubuntu"
       - name: chmod
@@ -53,7 +53,6 @@ jobs:
           host: 89.208.198.186
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
-          fingerprint: ${{ secrets.FINGERPRINT }}
           script: chmod 755 /home/ubuntu/bin/app
       - name: restart service
         uses: appleboy/ssh-action@master
@@ -61,5 +60,4 @@ jobs:
           host: 89.208.198.186
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
-          fingerprint: ${{ secrets.FINGERPRINT }}
           script: sudo systemctl restart api.service
