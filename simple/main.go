@@ -17,7 +17,7 @@ func MagicNumberHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("X-Version", version)
 
-	w.Write([]byte(fmt.Sprintf("Random numer: %d, version: %s", magicNumber, version)))
+	w.Write([]byte(fmt.Sprintf("Number: %d, version: %s", magicNumber, version)))
 }
 
 func main() {
