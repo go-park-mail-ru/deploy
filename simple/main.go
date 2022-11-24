@@ -17,6 +17,8 @@ func MagicNumberHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("X-Version", version)
 
+	fmt.Printf("magic number requested: %d", magicNumber)
+
 	w.Write([]byte(fmt.Sprintf("Number: %d, version: %s", magicNumber, version)))
 }
 
