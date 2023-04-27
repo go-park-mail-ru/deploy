@@ -10,6 +10,6 @@ RUN apk add make git && make build
 
 FROM alpine:latest
 
-COPY --from=build /project/app /bin/
+COPY --from=build /project/bin/app /bin/
 
 CMD ["app"]

@@ -1,59 +1,59 @@
-name: Simple Build
+# name: Simple Build
 
-on:
-  push:
-    branches: [master]
+# on:
+#   push:
+#     branches: [master]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.20.x
+#     steps:
+#       - name: Install Go
+#         uses: actions/setup-go@v2
+#         with:
+#           go-version: 1.20.x
 
-      - name: Checkout code
-        uses: actions/checkout@v2
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      - name: Build
-        run: make build
+#       - name: Build
+#         run: make build
 
-      - name: Upload build result
-        uses: actions/upload-artifact@v1
-        with:
-          name: bin
-          path: ./bin/app
+#       - name: Upload build result
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: bin
+#           path: ./bin/app
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download bin file
-        uses: actions/download-artifact@v1
-        with:
-          name: bin
-      - name: Transfer bin file to server
-        uses: appleboy/scp-action@master
-        with:
-          host: 89.208.198.186
-          username: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
-          debug: true
-          source: "bin/app"
-          target: "/home/ubuntu"
-      - name: chmod
-        uses: appleboy/ssh-action@master
-        with:
-          host: 89.208.198.186
-          username: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: chmod 755 /home/ubuntu/bin/app
-      - name: restart service
-        uses: appleboy/ssh-action@master
-        with:
-          host: 89.208.198.186
-          username: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: sudo systemctl restart api.service
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build
+#     steps:
+#       - name: Download bin file
+#         uses: actions/download-artifact@v1
+#         with:
+#           name: bin
+#       - name: Transfer bin file to server
+#         uses: appleboy/scp-action@master
+#         with:
+#           host: 89.208.198.186
+#           username: ubuntu
+#           key: ${{ secrets.PRIVATE_KEY }}
+#           debug: true
+#           source: "bin/app"
+#           target: "/home/ubuntu"
+#       - name: chmod
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: 89.208.198.186
+#           username: ubuntu
+#           key: ${{ secrets.PRIVATE_KEY }}
+#           script: chmod 755 /home/ubuntu/bin/app
+#       - name: restart service
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: 89.208.198.186
+#           username: ubuntu
+#           key: ${{ secrets.PRIVATE_KEY }}
+#           script: sudo systemctl restart api.service
