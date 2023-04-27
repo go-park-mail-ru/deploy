@@ -33,7 +33,7 @@ func JokeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Write([]byte("Joke: " + joke.Joke))
+	w.Write([]byte("Not funny joke: " + joke.Joke))
 }
 
 func main() {

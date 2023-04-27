@@ -9,11 +9,11 @@
         dest: /etc/systemd/system/api.service
     - name: "Systemctl daemon reload"
       command: systemctl daemon-reload
-# - name: "Install docker"
-  # become: yes
-  # hosts: all
-  # roles:
-  #   - role: geerlingguy.docker
+- name: "Install docker"
+  become: yes
+  hosts: all
+  roles:
+    - role: geerlingguy.docker
 - name: "Install nginx"
   become: yes
   hosts: web

@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: dmitrydorofeev/godeploy:aaa3372d
+        image: dmitrydorofeev/godeploy:99925889
         ports:
         - containerPort: 8080
