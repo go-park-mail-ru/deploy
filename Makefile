@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	go build -o app ./simple
+	go build -o ./bin/app ./app
 
 
 #.PHONY: migrate

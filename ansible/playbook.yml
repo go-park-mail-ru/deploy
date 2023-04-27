@@ -14,26 +14,26 @@
   hosts: all
   roles:
     - role: geerlingguy.docker
-# - name: "Install nginx"
-#   become: yes
-#   hosts: web
-#   tasks:
-#     - name: "Install nginx package"
-#       apt:
-#         name: nginx
-#         state: present
-#     - name: "Copy nginx config"
-#       copy:
-#         src: files/jsdaddy.tech.conf
-#         dest: /etc/nginx/conf.d
-#     - name: "Reload nginx"
-#       command: "nginx -s reload"
-# - name: "Obtain certs"
-  # hosts: web
-  # become: yes
-  # vars:
-  #   certbot_auto_renew_user: ubuntu
-  #   certbot_auto_renew_minute: "20"
-  #   certbot_auto_renew_hour: "5"
-  # roles:
-  #     - geerlingguy.certbot
+- name: "Install nginx"
+  become: yes
+  hosts: web
+  tasks:
+    - name: "Install nginx package"
+      apt:
+        name: nginx
+        state: present
+    - name: "Copy nginx config"
+      copy:
+        src: files/frontend.conf
+        dest: /etc/nginx/conf.d
+    - name: "Reload nginx"
+      command: "nginx -s reload"
+- name: "Obtain certs"
+  hosts: web
+  become: yes
+  vars:
+    certbot_auto_renew_user: ubuntu
+    certbot_auto_renew_minute: "20"
+    certbot_auto_renew_hour: "5"
+  roles:
+      - geerlingguy.certbot
