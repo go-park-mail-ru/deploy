@@ -50,10 +50,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: chmod 755 /home/ubuntu/bin/app
-      # - name: restart service
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: 89.208.198.186
-      #     username: ubuntu
-      #     key: ${{ secrets.PRIVATE_KEY }}
-      #     script: sudo systemctl restart api.service
+      - name: restart service
+        uses: appleboy/ssh-action@master
+        with:
+          host: 89.208.198.186
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: sudo systemctl restart api.service
