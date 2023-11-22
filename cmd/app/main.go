@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -22,14 +23,18 @@ type Task struct {
 	Description string    `json:"description" db:"description"`
 }
 
+var dbPath = flag.String("db", "./tasks.db", "path to database file")
+
 func main() {
+	flag.Parse()
+
 	if err := run(); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func run() error {
-	db, err := sqlx.Connect("sqlite3", "./tasks.db")
+	db, err := sqlx.Connect("sqlite3", *dbPath)
 	if err != nil {
 		return err
 	}
