@@ -9,6 +9,9 @@ import (
 	"os"
 	"os/signal"
 
+	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/sqlite3"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
@@ -36,6 +39,15 @@ func main() {
 func run() error {
 	db, err := sqlx.Connect("sqlite3", *dbPath)
 	if err != nil {
+		return err
+	}
+
+	m, err := migrate.New("file://migrations", "sqlite3://"+*dbPath)
+	if err != nil {
+		return err
+	}
+	err = m.Up()
+	if err != nil && err != migrate.ErrNoChange {
 		return err
 	}
 

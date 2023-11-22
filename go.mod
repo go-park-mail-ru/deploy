@@ -11,11 +11,16 @@ require (
 
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
+	github.com/hashicorp/errwrap v1.1.0 // indirect
+	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/lib/pq v1.10.2 // indirect
+	go.uber.org/atomic v1.7.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 )
 
 require (
+	github.com/golang-migrate/migrate v3.5.4+incompatible
+	github.com/golang-migrate/migrate/v4 v4.16.2
 	github.com/labstack/echo/v4 v4.11.3
 	github.com/labstack/gommon v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
