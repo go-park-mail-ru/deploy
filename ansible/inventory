@@ -1,2 +1,2 @@
 [web]
-89.208.198.186 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/deploy-2022-2-EIWtAdpP.pem
+37.139.41.28 ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/deploy-WCtoLUXu.pem

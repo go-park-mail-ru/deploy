@@ -15,7 +15,7 @@ migrate: bin/migrate
 
 .PHONY: rollback
 rollback: bin/migrate
-	./bin/migrate -source file://migrations -database sqlite3://./tasks.db down
+	./bin/migrate -source file://migrations -database sqlite3://./tasks.db down 1
 
 .PHONY: create-task
 create-task:
