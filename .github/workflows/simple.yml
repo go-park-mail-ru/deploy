@@ -53,7 +53,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           debug: true
           source: "migrations"
-          target: "/home/ubuntu/migrations"
+          target: "/home/ubuntu/bin"
       - name: chmod
         uses: appleboy/ssh-action@master
         with:

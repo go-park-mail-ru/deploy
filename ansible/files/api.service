@@ -3,6 +3,7 @@ Description=App
 
 [Service]
 ExecStart=/home/ubuntu/bin/app -db /home/ubuntu/tasks.db
+WorkingDirectory=/home/ubuntu/bin
 
 [Install]
 WantedBy=multi-user.target
