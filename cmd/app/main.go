@@ -80,7 +80,7 @@ func run() error {
 			task.ID = uuid.New()
 		}
 
-		_, err = db.NamedExecContext(ctx, "INSERT INTO tasks (id, title, description) VALUES (:id, :title, :description)", task)
+		_, err = db.NamedExecContext(ctx, "INSERT INTO tasks (id, title, description, completed) VALUES (:id, :title, :description, :completed)", task)
 		if err != nil {
 			return err
 		}
